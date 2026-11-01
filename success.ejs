@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Successful</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f3f4f6; padding: 24px; }
+    .card { max-width: 460px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 12px;
+            text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    h1 { color: #16a34a; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>✔ Registration Successful</h1>
+    <p>Welcome, <strong><%= name %></strong>!</p>
+    <p>A confirmation would be sent to <strong><%= email %></strong>.</p>
+    <p><a href="/">Register another user</a></p>
+  </div>
+</body>
+</html>

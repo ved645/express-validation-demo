@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Side Validation Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #f3f4f6; margin: 0; padding: 24px; }
+    .card { max-width: 460px; margin: 0 auto; background: #fff; padding: 28px; border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    h1 { margin-top: 0; font-size: 1.4rem; }
+    p.sub { color: #6b7280; margin-top: -8px; font-size: .9rem; }
+    label { display: block; margin: 14px 0 4px; font-weight: 600; font-size: .9rem; }
+    input { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+    input.invalid { border-color: #dc2626; background: #fef2f2; }
+    .error { color: #dc2626; font-size: .82rem; margin-top: 4px; }
+    button { margin-top: 20px; width: 100%; padding: 12px; background: #2563eb; color: #fff;
+             border: 0; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    .summary { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 10px 14px;
+               border-radius: 8px; margin-bottom: 8px; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Registration Form</h1>
+    <p class="sub">All validation is performed on the server (ExpressJS).</p>
+
+    <% if (Object.keys(errors).length) { %>
+      <div class="summary">Please fix <%= Object.keys(errors).length %> error(s) below.</div>
+    <% } %>
+
+    <!-- novalidate: browser validation is disabled so the SERVER does the checking -->
+    <form action="/register" method="POST" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" value="<%= values.name || '' %>"
+             class="<%= errors.name ? 'invalid' : '' %>" />
+      <% if (errors.name) { %><div class="error"><%= errors.name.msg %></div><% } %>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="<%= values.email || '' %>"
+             class="<%= errors.email ? 'invalid' : '' %>" />
+      <% if (errors.email) { %><div class="error"><%= errors.email.msg %></div><% } %>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" value="<%= values.age || '' %>"
+             class="<%= errors.age ? 'invalid' : '' %>" />
+      <% if (errors.age) { %><div class="error"><%= errors.age.msg %></div><% } %>
+
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" value="<%= values.phone || '' %>"
+             class="<%= errors.phone ? 'invalid' : '' %>" />
+      <% if (errors.phone) { %><div class="error"><%= errors.phone.msg %></div><% } %>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password"
+             class="<%= errors.password ? 'invalid' : '' %>" />
+      <% if (errors.password) { %><div class="error"><%= errors.password.msg %></div><% } %>
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword"
+             class="<%= errors.confirmPassword ? 'invalid' : '' %>" />
+      <% if (errors.confirmPassword) { %><div class="error"><%= errors.confirmPassword.msg %></div><% } %>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>
