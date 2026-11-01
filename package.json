@@ -1,0 +1,18 @@
+{
+  "name": "express-server-validation-demo",
+  "version": "1.0.0",
+  "description": "Demonstrates server side validation using ExpressJS and express-validator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0"
+  }
+}
